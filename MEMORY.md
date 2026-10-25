@@ -11,8 +11,8 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 
 ## Sweep cursor
 
-- endCursor: (none)
-- passStartedAt: (none)
+- endCursor: eyJsYXN0X2lkIjo5MDQ1NTkxOTgyMTU5LCJsYXN0X3ZhbHVlIjoiOTA0NTU5MTk4MjE1OSJ9 (sortKey ID, after page 1; KM900-GR-US group straddles it)
+- passStartedAt: 2026-10-25
 - lastFullPassAt: (none)
 
 ## Approved fixes (you edit this; the agent applies only these, then marks them done)
@@ -63,6 +63,7 @@ LEAVE AS IS (your decision):
 3. Groups with no Overview/Specifications/FAQ anywhere: generate new content?
 4. Digest email: set REPORT_EMAIL?
 5. Did you check the 2026-10-13 pilot groups on the storefront?
+6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered.
 
 ## Learned patterns (only what a run actually observed)
 
@@ -70,4 +71,5 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-10-25: audit, sweep page 1 only: 33 groups, 0 link/condition issues, status rule discrepancy found (open question 6), no writes.
 - 2026-10-25: Repo created. No Shopify run yet.
