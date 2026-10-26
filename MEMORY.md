@@ -11,7 +11,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 
 ## Sweep cursor
 
-- endCursor: eyJsYXN0X2lkIjo5MDQ1NTkxOTgyMTU5LCJsYXN0X3ZhbHVlIjoiOTA0NTU5MTk4MjE1OSJ9 (sortKey ID, after page 1; KM900-GR-US group straddles it)
+- endCursor: eyJsYXN0X2lkIjo5MDYzODY2OTU3OTAzLCJsYXN0X3ZhbHVlIjoiOTA2Mzg2Njk1NzkwMyJ9 (sortKey ID, after page 10; no group straddles it; about 860 products remain)
 - passStartedAt: 2026-10-25
 - lastFullPassAt: (none)
 
@@ -33,8 +33,9 @@ Done:
 Corrupted MPN keys:
 (none)
 
-Blank condition or group:
-(none)
+Blank condition or group (53 seen, 2026-10-26, all 0 stock, no links; sweep page 9-10):
+- UNLISTED: TA1-5/10/20/30/40/50/75/100/150, TA2-5/10/20/30/40/50/75/100/150/250/500/750/1000/1500/2000/2500/3000, TA3-250/500/750/1000/1500/2000/2500/3000 (33)
+- ACTIVE: UTA1-10/20/30/40/50/75/100/150, UTA2-5/10/20/30/40/50/75/100/150/250/500 (20)
 
 Duplicate condition values in one group:
 (none)
@@ -63,7 +64,8 @@ LEAVE AS IS (your decision):
 3. Groups with no Overview/Specifications/FAQ anywhere: generate new content?
 4. Digest email: set REPORT_EMAIL?
 5. Did you check the 2026-10-13 pilot groups on the storefront?
-6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered.
+6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered. 2026-10-26: 24 groups in pages 2-10 show the same pattern (list in outputs/2026-10-26-audit.md), 0 groups the opposite. Looks like stock-swap behaviour.
+7. Blank-condition products so far are TA*/UTA* families (53, see Exceptions). Leave? Should the 20 ACTIVE UTA* with 0 stock be live?
 
 ## Learned patterns (only what a run actually observed)
 
@@ -71,5 +73,6 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-10-26: audit, sweep pages 2-10: 261 groups, 237 clean, 24 status-pattern (open question 6), 0 link/condition issues, 53 blank skipped, no writes. Reference group re-read: matches 2026-10-25.
 - 2026-10-25: audit, sweep page 1 only: 33 groups, 0 link/condition issues, status rule discrepancy found (open question 6), no writes.
 - 2026-10-25: Repo created. No Shopify run yet.
