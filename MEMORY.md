@@ -11,7 +11,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 
 ## Sweep cursor
 
-- endCursor: eyJsYXN0X2lkIjo5MDYzODY2OTU3OTAzLCJsYXN0X3ZhbHVlIjoiOTA2Mzg2Njk1NzkwMyJ9 (sortKey ID, after page 10; no group straddles it; about 860 products remain)
+- endCursor: eyJsYXN0X2lkIjoxMDMzMzcxNTM2NTk2NywibGFzdF92YWx1ZSI6IjEwMzMzNzE1MzY1OTY3In0= (sortKey ID, after page 17; about 510 products remain; groups can straddle pages, links are resolved with nodes())
 - passStartedAt: 2026-10-25
 - lastFullPassAt: (none)
 
@@ -30,15 +30,17 @@ Done:
 
 ## Exceptions (skipped on purpose, not guessed)
 
-Corrupted MPN keys:
-(none)
+Corrupted MPN keys (2026-10-27, skipped, not linked or touched):
+- `6.11E+11`: 611247378014-N (Keurig frother, ACTIVE); 611247378007-N and -LN (Keurig K-Cafe, linked to each other, N ACTIVE, LN ACTIVE; both ACTIVE)
 
-Blank condition or group (53 seen, 2026-10-26, all 0 stock, no links; sweep page 9-10):
+Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 more on page 11 on 2026-10-27: ACTIVE UTA2-750..UTA2-30000 (19), UTA3-250..UTA3-30000 (21)):
 - UNLISTED: TA1-5/10/20/30/40/50/75/100/150, TA2-5/10/20/30/40/50/75/100/150/250/500/750/1000/1500/2000/2500/3000, TA3-250/500/750/1000/1500/2000/2500/3000 (33)
 - ACTIVE: UTA1-10/20/30/40/50/75/100/150, UTA2-5/10/20/30/40/50/75/100/150/250/500 (20)
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-10-27, see outputs/2026-10-27-audit.md): 31 Refresh-only products with `-RF` in condition_group; 14 `-GEN` SKUs with condition New; CP-PWR-CUBE-3-GEN possible split from CP-PWR-CUBE-3; SCMCTS30000-N group key SCMCTS3000.
 
 LEAVE AS IS (your decision):
 (none)
@@ -60,11 +62,12 @@ LEAVE AS IS (your decision):
 ## Open questions (need you; the agent will not assume)
 
 1. Cisco `Cisco Excess` / `REF` values: rename to Wholesale / Refresh?
-2. About 93 products have a blank condition or group: leave or classify?
+2. 93 products have a blank condition or group (all TA*/UTA* 'Product Repair Upsell'): leave or classify?
 3. Groups with no Overview/Specifications/FAQ anywhere: generate new content?
 4. Digest email: set REPORT_EMAIL?
 5. Did you check the 2026-10-13 pilot groups on the storefront?
-6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered. 2026-10-26: 24 groups in pages 2-10 show the same pattern (list in outputs/2026-10-26-audit.md), 0 groups the opposite. Looks like stock-swap behaviour.
+6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered. 2026-10-26: 24 groups in pages 2-10 show the same pattern (list in outputs/2026-10-26-audit.md), 0 groups the opposite. Looks like stock-swap behaviour. 2026-10-27: one more (DP-9841-K9), 25 total.
+8. (2026-10-27) Refresh-only products keyed `<MPN>-RF` (31) and `-GEN` SKUs marked condition New (14): fix keys / conditions, or leave? Corrupted `6.11E+11` Keurig group: fix to real MPN?
 7. Blank-condition products so far are TA*/UTA* families (53, see Exceptions). Leave? Should the 20 ACTIVE UTA* with 0 stock be live?
 
 ## Learned patterns (only what a run actually observed)
@@ -73,6 +76,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-10-27: audit, sweep pages 11-17: ~281 groups, ~234 clean, 47 flagged (1 status Q6, 31 -RF keys, 14 -GEN/New, 1 split, 1 key mismatch; see open question 8), 0 link errors, 40 blank + 3 corrupted skipped, no writes. Reference group re-read: matches.
 - 2026-10-26: audit, sweep pages 2-10: 261 groups, 237 clean, 24 status-pattern (open question 6), 0 link/condition issues, 53 blank skipped, no writes. Reference group re-read: matches 2026-10-25.
 - 2026-10-25: audit, sweep page 1 only: 33 groups, 0 link/condition issues, status rule discrepancy found (open question 6), no writes.
 - 2026-10-25: Repo created. No Shopify run yet.
