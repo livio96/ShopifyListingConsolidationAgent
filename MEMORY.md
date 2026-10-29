@@ -12,6 +12,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 ## Sweep cursor
 
 - endCursor: (pass complete; next run starts again from the first page. Last page 29 ended at eyJsYXN0X2lkIjoxNTQyNTc1MzAyMjU0MywibGFzdF92YWx1ZSI6IjE1NDI1NzUzMDIyNTQzIn0=)
+- pass 2: started 2026-10-29, page 1 read, no changes since pass 1 (updated_at check = 0 products), stopped. Next run: re-check updated_at since 2026-10-29 first, full re-read only if products changed.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -78,6 +79,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-10-29: audit, pass 2: page 1 read (~33 groups, 32 clean, 1 known Q6 status pattern), change detection found 0 updated products since 2026-10-28, so no full re-read. Reference group re-read: matches. No writes.
 - 2026-10-28: audit, sweep pages 18-29, pass 1 COMPLETE: 564 products, ~440 groups, ~395 clean, ~45 flagged (10 status Q6, 3 single not ACTIVE, 23 -RF keys, 2 -GEN/New, 2 key suffix, 1 condition/SKU mismatch, 1 `Refurbished`), 0 link errors, no writes. Went past ~300-group guide to finish the pass. Reference group re-read: matches.
 - 2026-10-27: audit, sweep pages 11-17: ~281 groups, ~234 clean, 47 flagged (1 status Q6, 31 -RF keys, 14 -GEN/New, 1 split, 1 key mismatch; see open question 8), 0 link errors, 40 blank + 3 corrupted skipped, no writes. Reference group re-read: matches.
 - 2026-10-26: audit, sweep pages 2-10: 261 groups, 237 clean, 24 status-pattern (open question 6), 0 link/condition issues, 53 blank skipped, no writes. Reference group re-read: matches 2026-10-25.
