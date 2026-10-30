@@ -13,6 +13,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 
 - endCursor: (pass complete; next run starts again from the first page. Last page 29 ended at eyJsYXN0X2lkIjoxNTQyNTc1MzAyMjU0MywibGFzdF92YWx1ZSI6IjE1NDI1NzUzMDIyNTQzIn0=)
 - pass 2: started 2026-10-29, page 1 read, no changes since pass 1 (updated_at check = 0 products), stopped. Next run: re-check updated_at since 2026-10-29 first, full re-read only if products changed.
+- pass 3 (2026-10-30): change check found 964 of 1,413 products updated since 2026-10-29T20:00Z. Only products 1-100 by ID re-read (ended at id 9045897445455, cursor eyJsYXN0X2lkIjo5MDQ1ODk3NDQ1NDU1LCJsYXN0X3ZhbHVlIjoiOTA0NTg5NzQ0NTQ1NSJ9, sortKey ID). Resume there; full re-read needs a script or several workers.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -72,6 +73,7 @@ LEAVE AS IS (your decision):
 6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered. 2026-10-26: 24 groups in pages 2-10 show the same pattern (list in outputs/2026-10-26-audit.md), 0 groups the opposite. Looks like stock-swap behaviour. 2026-10-27: one more (DP-9841-K9), 25 total. 2026-10-28: 10 more, 35 total, 0 opposite (list in outputs/2026-10-28-audit.md); includes pilot group 700504845 (Recertified ACTIVE, New UNLISTED 0 stock).
 8. (2026-10-27) Refresh-only products keyed `<MPN>-RF` (31) and `-GEN` SKUs marked condition New (14): fix keys / conditions, or leave? Corrupted `6.11E+11` Keurig group: fix to real MPN?
 7. Blank-condition products so far are TA*/UTA* families (53, see Exceptions). Leave? Should the 20 ACTIVE UTA* with 0 stock be live?
+9. (2026-10-30) 964 products updated 2026-10-29 evening and productsCount is 1,413 (this file said 564): expected? New in first 100: WD19S180W Q6 variant (Recertified ACTIVE, Like New UNLISTED 0 stock), 010-02564-00 and P2426H single-condition UNLISTED.
 
 ## Learned patterns (only what a run actually observed)
 
@@ -79,6 +81,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-10-30: audit, pass 3 partial: 964/1,413 products changed since 10-29, only first 100 re-read (about 70 groups, 0 link errors, 4 status items), full re-read not feasible in-context. Reference group matches. No writes.
 - 2026-10-29: audit, pass 2: page 1 read (~33 groups, 32 clean, 1 known Q6 status pattern), change detection found 0 updated products since 2026-10-28, so no full re-read. Reference group re-read: matches. No writes.
 - 2026-10-28: audit, sweep pages 18-29, pass 1 COMPLETE: 564 products, ~440 groups, ~395 clean, ~45 flagged (10 status Q6, 3 single not ACTIVE, 23 -RF keys, 2 -GEN/New, 2 key suffix, 1 condition/SKU mismatch, 1 `Refurbished`), 0 link errors, no writes. Went past ~300-group guide to finish the pass. Reference group re-read: matches.
 - 2026-10-27: audit, sweep pages 11-17: ~281 groups, ~234 clean, 47 flagged (1 status Q6, 31 -RF keys, 14 -GEN/New, 1 split, 1 key mismatch; see open question 8), 0 link errors, 40 blank + 3 corrupted skipped, no writes. Reference group re-read: matches.
