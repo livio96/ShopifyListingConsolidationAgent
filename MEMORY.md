@@ -14,6 +14,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - endCursor: (pass complete; next run starts again from the first page. Last page 29 ended at eyJsYXN0X2lkIjoxNTQyNTc1MzAyMjU0MywibGFzdF92YWx1ZSI6IjE1NDI1NzUzMDIyNTQzIn0=)
 - pass 2: started 2026-10-29, page 1 read, no changes since pass 1 (updated_at check = 0 products), stopped. Next run: re-check updated_at since 2026-10-29 first, full re-read only if products changed.
 - pass 3 (2026-10-30): change check found 964 of 1,413 products updated since 2026-10-29T20:00Z. Only products 1-100 by ID re-read (ended at id 9045897445455, cursor eyJsYXN0X2lkIjo5MDQ1ODk3NDQ1NDU1LCJsYXN0X3ZhbHVlIjoiOTA0NTg5NzQ0NTQ1NSJ9, sortKey ID). Resume there; full re-read needs a script or several workers.
+- pass 3 (2026-10-31): 12 products changed since 2026-10-30T08:00Z, all re-read, no link errors; products 101-1,413 by ID still not re-read. Resume at cursor above when a script/workers are available.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -75,12 +76,15 @@ LEAVE AS IS (your decision):
 7. Blank-condition products so far are TA*/UTA* families (53, see Exceptions). Leave? Should the 20 ACTIVE UTA* with 0 stock be live?
 9. (2026-10-30) 964 products updated 2026-10-29 evening and productsCount is 1,413 (this file said 564): expected? New in first 100: WD19S180W Q6 variant (Recertified ACTIVE, Like New UNLISTED 0 stock), 010-02564-00 and P2426H single-condition UNLISTED.
 
+9b. (2026-10-31) Q6 pattern +3 (CP-3905, WPP30, 1013679; LN ACTIVE, New UNLISTED qty 0). Single-condition UNLISTED: SIP-T34W (LN, qty 0). SIP-T54W LN title differs from New title.
+
 ## Learned patterns (only what a run actually observed)
 
 (none yet)
 
 ## Run log (newest first, one line each)
 
+- 2026-10-31: audit, pass 3 change check: 12 products changed, 12 groups read, 6 clean, 3 Q6, 1 title mismatch, 1 single UNLISTED, 0 link errors. Reference group matches. No writes.
 - 2026-10-30: audit, pass 3 partial: 964/1,413 products changed since 10-29, only first 100 re-read (about 70 groups, 0 link errors, 4 status items), full re-read not feasible in-context. Reference group matches. No writes.
 - 2026-10-29: audit, pass 2: page 1 read (~33 groups, 32 clean, 1 known Q6 status pattern), change detection found 0 updated products since 2026-10-28, so no full re-read. Reference group re-read: matches. No writes.
 - 2026-10-28: audit, sweep pages 18-29, pass 1 COMPLETE: 564 products, ~440 groups, ~395 clean, ~45 flagged (10 status Q6, 3 single not ACTIVE, 23 -RF keys, 2 -GEN/New, 2 key suffix, 1 condition/SKU mismatch, 1 `Refurbished`), 0 link errors, no writes. Went past ~300-group guide to finish the pass. Reference group re-read: matches.
