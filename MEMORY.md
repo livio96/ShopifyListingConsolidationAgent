@@ -15,6 +15,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 2: started 2026-10-29, page 1 read, no changes since pass 1 (updated_at check = 0 products), stopped. Next run: re-check updated_at since 2026-10-29 first, full re-read only if products changed.
 - pass 3 (2026-10-30): change check found 964 of 1,413 products updated since 2026-10-29T20:00Z. Only products 1-100 by ID re-read (ended at id 9045897445455, cursor eyJsYXN0X2lkIjo5MDQ1ODk3NDQ1NDU1LCJsYXN0X3ZhbHVlIjoiOTA0NTg5NzQ0NTQ1NSJ9, sortKey ID). Resume there; full re-read needs a script or several workers.
 - pass 3 (2026-11-01): change check found 11 products updated since 2026-10-30T12:00Z, all audited (see outputs/2026-11-01-audit.md). Pass 3 re-read still only covers first 100 by ID; resume at the cursor above.
+- pass 3 (2026-11-02): change check since 2026-11-01T12:00Z found 1 product, clean. Resume cursor unchanged.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -82,6 +83,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-02: audit, change check only: 1 product updated since 11-01 (Zebra ZD4A042-D0EE00EZ, clean). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-01: audit, change check only: 11 products updated since 10-30, about 10 groups, 3 more Q6 status items (1013679, WPP30, CP-3905; 38 total), 1 single UNLISTED (SIP-T34W-LN). Reference group matches. No writes. Pass 3 not completed.
 - 2026-10-30: audit, pass 3 partial: 964/1,413 products changed since 10-29, only first 100 re-read (about 70 groups, 0 link errors, 4 status items), full re-read not feasible in-context. Reference group matches. No writes.
 - 2026-10-29: audit, pass 2: page 1 read (~33 groups, 32 clean, 1 known Q6 status pattern), change detection found 0 updated products since 2026-10-28, so no full re-read. Reference group re-read: matches. No writes.
