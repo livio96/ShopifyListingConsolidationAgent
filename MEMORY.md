@@ -17,6 +17,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-01): change check found 11 products updated since 2026-10-30T12:00Z, all audited (see outputs/2026-11-01-audit.md). Pass 3 re-read still only covers first 100 by ID; resume at the cursor above.
 - pass 3 (2026-11-02): change check since 2026-11-01T12:00Z found 1 product, clean. Resume cursor unchanged.
 - pass 3 (2026-11-03): change check since 2026-11-02T12:00Z found 5 products, all clean. Resume cursor unchanged.
+- pass 3 (2026-11-04): change check since 2026-11-03T12:00Z found 9 products, 2 issues (see outputs/2026-11-04-audit.md). Resume cursor unchanged.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -45,7 +46,7 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 Duplicate condition values in one group:
 (none)
 
-Needs decision (2026-10-28, see outputs/2026-10-28-audit.md): 23 more `-RF` group keys; 2 more `-GEN`/New (26716-01-GEN, PWR-12V-2A-GEN); group keys with suffix 4J0A2AA-NOB, RE20-BLACK-N; CP-8851-NR-K9-LN has condition Refresh; 2200-48600-025RS has condition `Refurbished`; single-condition not ACTIVE: 1517-49585-001-N (UNLISTED), J9775A and J9773A-LN (DRAFT).
+Needs decision (2026-10-28, see outputs/2026-10-28-audit.md): 23 more `-RF` group keys; 2 more `-GEN`/New (26716-01-GEN, PWR-12V-2A-GEN); group keys with suffix 4J0A2AA-NOB, RE20-BLACK-N; CP-8851-NR-K9-LN has condition Refresh; 2200-48600-025RS has condition `Refurbished`; single-condition not ACTIVE: HEGSKAAAAUSZ-LN Nintendo Switch OLED (UNLISTED, 2026-11-04), 1517-49585-001-N (UNLISTED), J9775A and J9773A-LN (DRAFT).
 
 Needs decision (2026-10-27, see outputs/2026-10-27-audit.md): 31 Refresh-only products with `-RF` in condition_group; 14 `-GEN` SKUs with condition New; CP-PWR-CUBE-3-GEN possible split from CP-PWR-CUBE-3; SCMCTS30000-N group key SCMCTS3000.
 
@@ -73,7 +74,7 @@ LEAVE AS IS (your decision):
 3. Groups with no Overview/Specifications/FAQ anywhere: generate new content?
 4. Digest email: set REPORT_EMAIL?
 5. Did you check the 2026-10-13 pilot groups on the storefront?
-6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered. 2026-10-26: 24 groups in pages 2-10 show the same pattern (list in outputs/2026-10-26-audit.md), 0 groups the opposite. Looks like stock-swap behaviour. 2026-10-27: one more (DP-9841-K9), 25 total. 2026-10-28: 10 more, 35 total (2026-11-01: 3 more, 38 total), 0 opposite (list in outputs/2026-10-28-audit.md); includes pilot group 700504845 (Recertified ACTIVE, New UNLISTED 0 stock).
+6. STATUS RULE DISPUTE (2026-10-25): reference groups 84CEPY-PFC-1L1-C4 and 7K2F3AA have an in-stock lower condition ACTIVE and New (0 stock) UNLISTED; skill says New is always main. Hierarchy or stock-swap? No status fixes proposed until answered. 2026-10-26: 24 groups in pages 2-10 show the same pattern (list in outputs/2026-10-26-audit.md), 0 groups the opposite. Looks like stock-swap behaviour. 2026-10-27: one more (DP-9841-K9), 25 total. 2026-10-28: 10 more, 35 total (2026-11-01: 3 more, 38 total; 2026-11-04: UAP-AC-PRO-US, 39 total), 0 opposite (list in outputs/2026-10-28-audit.md); includes pilot group 700504845 (Recertified ACTIVE, New UNLISTED 0 stock).
 8. (2026-10-27) Refresh-only products keyed `<MPN>-RF` (31) and `-GEN` SKUs marked condition New (14): fix keys / conditions, or leave? Corrupted `6.11E+11` Keurig group: fix to real MPN?
 7. Blank-condition products so far are TA*/UTA* families (53, see Exceptions). Leave? Should the 20 ACTIVE UTA* with 0 stock be live?
 9. (2026-10-30) 964 products updated 2026-10-29 evening and productsCount is 1,413 (this file said 564): expected? New in first 100: WD19S180W Q6 variant (Recertified ACTIVE, Like New UNLISTED 0 stock), 010-02564-00 and P2426H single-condition UNLISTED.
@@ -84,6 +85,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-04: audit, change check only: 9 products updated since 11-03 (7 clean, UAP-AC-PRO-US Q6 status, Nintendo HEGSKAAAAUSZ-LN single UNLISTED). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-03: audit, change check only: 5 products updated since 11-02 (U6-PLUS, Zebra ZD4A042, SCMCTS3000, CP-8841-3PW-K9, NT8B26AABL), all clean/known. Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-02: audit, change check only: 1 product updated since 11-01 (Zebra ZD4A042-D0EE00EZ, clean). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-01: audit, change check only: 11 products updated since 10-30, about 10 groups, 3 more Q6 status items (1013679, WPP30, CP-3905; 38 total), 1 single UNLISTED (SIP-T34W-LN). Reference group matches. No writes. Pass 3 not completed.
