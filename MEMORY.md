@@ -18,6 +18,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-02): change check since 2026-11-01T12:00Z found 1 product, clean. Resume cursor unchanged.
 - pass 3 (2026-11-03): change check since 2026-11-02T12:00Z found 5 products, all clean. Resume cursor unchanged.
 - pass 3 (2026-11-04): change check since 2026-11-03T12:00Z found 9 products, 2 issues (see outputs/2026-11-04-audit.md). Resume cursor unchanged.
+- pass 3 (2026-11-05): change check since 2026-11-04T12:00Z returned more than 100 products (bulk touch at 07:00Z today). First 100 by ID read, cursor eyJsYXN0X2lkIjo5MDc2MDY4NDgzMTUxLCJsYXN0X3ZhbHVlIjoiOTA3NjA2ODQ4MzE1MSJ9 (same query, resume there). 9 issues, see outputs/2026-11-05-audit.md.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -45,6 +46,8 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-11-05, see outputs/2026-11-05-audit.md): DELL-WD25Z has no ACTIVE product (N and LN both UNLISTED); single UNLISTED: 37966020-N, 1950GSR-2USB-LN.
 
 Needs decision (2026-10-28, see outputs/2026-10-28-audit.md): 23 more `-RF` group keys; 2 more `-GEN`/New (26716-01-GEN, PWR-12V-2A-GEN); group keys with suffix 4J0A2AA-NOB, RE20-BLACK-N; CP-8851-NR-K9-LN has condition Refresh; 2200-48600-025RS has condition `Refurbished`; single-condition not ACTIVE: HEGSKAAAAUSZ-LN Nintendo Switch OLED (UNLISTED, 2026-11-04), 1517-49585-001-N (UNLISTED), J9775A and J9773A-LN (DRAFT).
 
@@ -85,6 +88,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-05: audit, change check: more than 100 products updated since 11-04 12:00Z (bulk touch 07:00Z), first 100 read (~75 groups, 0 link errors): DELL-WD25Z no ACTIVE, 4 more Q6 (1000970, 8X231AA, DS2278-SR7U2100PRW, ZD22042-D0EG00EZ; 43 total), 2 single UNLISTED. Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-04: audit, change check only: 9 products updated since 11-03 (7 clean, UAP-AC-PRO-US Q6 status, Nintendo HEGSKAAAAUSZ-LN single UNLISTED). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-03: audit, change check only: 5 products updated since 11-02 (U6-PLUS, Zebra ZD4A042, SCMCTS3000, CP-8841-3PW-K9, NT8B26AABL), all clean/known. Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-02: audit, change check only: 1 product updated since 11-01 (Zebra ZD4A042-D0EE00EZ, clean). Reference group matches. No writes. Pass 3 not completed.
