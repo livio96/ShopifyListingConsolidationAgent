@@ -22,6 +22,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-06): resumed the 11-04 change-check query at the 11-05 cursor; 2 pages (103 products) read, hasNextPage false, so the >=2026-11-04T12:00Z set is fully read. Next run: change check since 2026-11-06T12:00Z. Full pass 3 re-read (first 100 by ID done, rest not) still not completed.
 - pass 3 (2026-11-07): change check since 2026-11-06T12:00Z found 3 products, all clean/known. Next run: change check since 2026-11-07T12:00Z. Resume cursor for full re-read unchanged.
 - pass 3 (2026-11-08): change check since 2026-11-07T12:00Z found 0 products. Next run: change check since 2026-11-08T12:00Z. Resume cursor for full re-read unchanged.
+- pass 3 (2026-11-09): change check since 2026-11-08T12:00Z found 0 products. Next run: change check since 2026-11-09T12:00Z. Resume cursor for full re-read unchanged.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -95,6 +96,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-09: audit, change check: 0 products updated since 11-08 12:00Z. Reference group 84CEPY-PFC-1L1-C4 re-read: matches (NOB ACTIVE, New and LN UNLISTED, links symmetric). No writes. Pass 3 not completed.
 - 2026-11-08: audit, change check: 0 products updated since 11-07 12:00Z. Reference group 84CEPY-PFC-1L1-C4 re-read: links symmetric, NOB ACTIVE (2 in stock), New and LN UNLISTED (known Q6 pattern). No writes. Pass 3 not completed.
 - 2026-11-07: audit, change check: 3 products updated since 11-06 (DELL-WD25Z-N now ACTIVE, Epson C31CH51011-LN single clean, SCMCTS30000-N known). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-06: audit, change check finished the >=11-04 set (103 more products, ~85 groups, 0 link errors): 2 groups with no ACTIVE, 14 single UNLISTED, 10 -RF keys, Q6 MP56-TEAMS. Reference group matches. No writes. Pass 3 not completed.
