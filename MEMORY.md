@@ -23,6 +23,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-07): change check since 2026-11-06T12:00Z found 3 products, all clean/known. Next run: change check since 2026-11-07T12:00Z. Resume cursor for full re-read unchanged.
 - pass 3 (2026-11-08): change check since 2026-11-07T12:00Z found 0 products. Next run: change check since 2026-11-08T12:00Z. Resume cursor for full re-read unchanged.
 - pass 3 (2026-11-09): change check since 2026-11-08T12:00Z found 0 products. Next run: change check since 2026-11-09T12:00Z. Resume cursor for full re-read unchanged.
+- pass 3 (2026-11-10): change check since 2026-11-09T12:00Z found 8 products, all clean. Next run: change check since 2026-11-10T12:00Z. Resume cursor for full re-read unchanged.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -51,6 +52,7 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 Duplicate condition values in one group:
 (none)
 
+Update 2026-11-10: HEGSKAAAAUSZ-LN (Nintendo Switch OLED) now ACTIVE (resolved).
 Update 2026-11-07: DELL-WD25Z now has New ACTIVE (resolved).
 
 Needs decision (2026-11-06, see outputs/2026-11-06-audit.md): no ACTIVE product in SR-A10 (N, LN both UNLISTED) and CBS250-48T-4X-NA (RF, LN both UNLISTED); 14 single-condition UNLISTED items listed in the report; 10 more -RF keys.
@@ -96,6 +98,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-10: audit, change check: 8 products updated since 11-09 12:00Z, 8 groups, all clean (HEGSKAAAAUSZ-LN now ACTIVE). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-09: audit, change check: 0 products updated since 11-08 12:00Z. Reference group 84CEPY-PFC-1L1-C4 re-read: matches (NOB ACTIVE, New and LN UNLISTED, links symmetric). No writes. Pass 3 not completed.
 - 2026-11-08: audit, change check: 0 products updated since 11-07 12:00Z. Reference group 84CEPY-PFC-1L1-C4 re-read: links symmetric, NOB ACTIVE (2 in stock), New and LN UNLISTED (known Q6 pattern). No writes. Pass 3 not completed.
 - 2026-11-07: audit, change check: 3 products updated since 11-06 (DELL-WD25Z-N now ACTIVE, Epson C31CH51011-LN single clean, SCMCTS30000-N known). Reference group matches. No writes. Pass 3 not completed.
