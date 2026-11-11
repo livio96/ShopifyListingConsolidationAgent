@@ -24,6 +24,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-08): change check since 2026-11-07T12:00Z found 0 products. Next run: change check since 2026-11-08T12:00Z. Resume cursor for full re-read unchanged.
 - pass 3 (2026-11-09): change check since 2026-11-08T12:00Z found 0 products. Next run: change check since 2026-11-09T12:00Z. Resume cursor for full re-read unchanged.
 - pass 3 (2026-11-10): change check since 2026-11-09T12:00Z found 8 products, all clean. Next run: change check since 2026-11-10T12:00Z. Resume cursor for full re-read unchanged.
+- pass 3 (2026-11-11): change check since 2026-11-10T12:00Z found 3 products, clean/known. Full re-read resumed at the 10-30 cursor (sortKey ID): products 101-600 read (~297 groups). Resume full re-read at eyJsYXN0X2lkIjo5MDc2MDY2ODExOTgzLCJsYXN0X3ZhbHVlIjoiOTA3NjA2NjgxMTk4MyJ9 (600 of 1,413, sortKey ID). Next run: change check since 2026-11-11T12:00Z, then continue the re-read.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-10-28
 
@@ -51,6 +52,8 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-11-11, see outputs/2026-11-11-audit.md): no ACTIVE product in 77Y82AA-ABA (LN 2, N 2 in stock), 211203-01 (was LN ACTIVE), 2200-48830-001; single UNLISTED 0 stock: 210979-01-LN, 77Z31AA-LN, 8M3X3AA-LN, LOCOM5-EU-LN, ZT41143-T0E0000Z-N; EXM100-1000 condition New but bare SKU; 3 more Q6 (7W6D4AA-ABA, RZ04-05400100-R3U1, LI3678-SR3U42A0S1W).
 
 Update 2026-11-10: HEGSKAAAAUSZ-LN (Nintendo Switch OLED) now ACTIVE (resolved).
 Update 2026-11-07: DELL-WD25Z now has New ACTIVE (resolved).
@@ -98,6 +101,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-11: audit, change check (3 products, clean/known) + pass 3 re-read products 101-600 (~297 groups, 0 link errors, 93 blank skipped): 3 groups with no ACTIVE, 5 single UNLISTED, 1 condition/SKU mismatch, 3 more Q6. Reference group matches. No writes. Pass 3 at 600/1,413.
 - 2026-11-10: audit, change check: 8 products updated since 11-09 12:00Z, 8 groups, all clean (HEGSKAAAAUSZ-LN now ACTIVE). Reference group matches. No writes. Pass 3 not completed.
 - 2026-11-09: audit, change check: 0 products updated since 11-08 12:00Z. Reference group 84CEPY-PFC-1L1-C4 re-read: matches (NOB ACTIVE, New and LN UNLISTED, links symmetric). No writes. Pass 3 not completed.
 - 2026-11-08: audit, change check: 0 products updated since 11-07 12:00Z. Reference group 84CEPY-PFC-1L1-C4 re-read: links symmetric, NOB ACTIVE (2 in stock), New and LN UNLISTED (known Q6 pattern). No writes. Pass 3 not completed.
