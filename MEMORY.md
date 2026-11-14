@@ -27,6 +27,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-11): change check since 2026-11-10T12:00Z found 3 products, clean/known. Full re-read resumed at the 10-30 cursor (sortKey ID): products 101-600 read (~297 groups). Resume full re-read at eyJsYXN0X2lkIjo5MDc2MDY2ODExOTgzLCJsYXN0X3ZhbHVlIjoiOTA3NjA2NjgxMTk4MyJ9 (600 of 1,413, sortKey ID). Next run: change check since 2026-11-11T12:00Z, then continue the re-read.
 - pass 3 (2026-11-12): change check since 2026-11-11T12:00Z found 0 products. Full re-read products 601-1050 read (~350 groups). Resume full re-read at eyJsYXN0X2lkIjoxMDMzMzc5MzU4MzE4MywibGFzdF92YWx1ZSI6IjEwMzMzNzkzNTgzMTgzIn0= (1,050 of 1,413, sortKey ID). Next run: change check since 2026-11-12T12:00Z, then finish the re-read (about 363 products left).
 - pass 3 (2026-11-13): change check since 2026-11-12T12:00Z found 3 products, clean/known. Full re-read products 1051-1413 read, hasNextPage false: **pass 3 COMPLETE**. Next run: change check since 2026-11-13T00:00Z; no full re-read pending (start pass 4 only if a change check returns a bulk touch).
+- 2026-11-14: change check since 2026-11-13T00:00Z found 284 products (bulk touch 11-13 ~18-23Z). All 284 read plus 123 linked siblings (last cursor eyJsYXN0X2lkIjoxMDMzMzg1MzU0ODYyMywibGFzdF92YWx1ZSI6IjEwMzMzODUzNTQ4NjIzIn0=, hasNextPage false). Next run: change check since 2026-11-14T00:00Z. No full re-read pending (pass 3 complete 11-13; 284/1,413 changed, below the threshold for a pass 4).
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-11-13 (pass 3; pass 1 2026-10-28)
 
@@ -54,6 +55,8 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-11-14, see outputs/2026-11-14-audit.md): no ACTIVE product in ATA191-3PW-K9, W79P, 82M89AA, WPP30 (all 0 stock), and still C31CJ57112 (N now 200 in stock) and SR-A10; HEGSKAAAAUSZ-LN UNLISTED again (0 stock); 10 more single UNLISTED 0 stock; 16 more Q6; key 8R706AA#ABB; SEO-style titles on 7W073AA and 8R706AA-ABB. Resolved: 7K2F3AA, 206110-101, BES840BSXL, CP-3905, DP-9841-K9, P2426H, 77Y82AA-ABA now has an ACTIVE product.
 
 Needs decision (2026-11-13, see outputs/2026-11-13-audit.md): 2 more Q6 (BES840BSXL, DBX286SV); single UNLISTED: CBS250-48T-4G-UK-RF (2 in stock), KB800PB-US-LN, CBS350-48T-4G-NA-LN; possible typo key G2200-48350-025 (LN ACTIVE) vs group 2200-48350-025.
 
@@ -103,10 +106,11 @@ LEAVE AS IS (your decision):
 
 ## Learned patterns (only what a run actually observed)
 
-(none yet)
+- 2026-11-14: in bulk touches, status follows stock both ways: New gets stock and becomes ACTIVE, and 0-stock members (even single products) become UNLISTED. This suggests a stock-based status job. Unconfirmed (Q6).
 
 ## Run log (newest first, one line each)
 
+- 2026-11-14: audit, change check: 284 products (bulk touch), ~230 groups, 0 link errors. 6 groups with no ACTIVE (C31CJ57112 N has 200 stock), 11 single UNLISTED, 16 new Q6, 6 resolved, 1 key '#', 2 SEO-style titles. Reference group matches. No writes.
 - 2026-11-13: audit, change check (3 products, clean/known) + pass 3 re-read products 1051-1413 (~300 groups, 0 link errors): pass 3 COMPLETE. New: 2 Q6, 3 single UNLISTED (CBS250-48T-4G-UK-RF has 2 in stock), 1 possible typo key G2200-48350-025. Reference group matches. No writes.
 - 2026-11-12: audit, change check (0 products) + pass 3 re-read products 601-1050 (~350 groups, 0 link errors, 3 corrupted-key skipped): 3 groups with no ACTIVE (C31CJ57112 has stock), 2 more Q6, 10 single UNLISTED, 2 -GEN/New, 11 -RF keys. Reference group matches. No writes. Pass 3 at 1,050/1,413.
 - 2026-11-11: audit, change check (3 products, clean/known) + pass 3 re-read products 101-600 (~297 groups, 0 link errors, 93 blank skipped): 3 groups with no ACTIVE, 5 single UNLISTED, 1 condition/SKU mismatch, 3 more Q6. Reference group matches. No writes. Pass 3 at 600/1,413.
