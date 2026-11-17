@@ -28,6 +28,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-12): change check since 2026-11-11T12:00Z found 0 products. Full re-read products 601-1050 read (~350 groups). Resume full re-read at eyJsYXN0X2lkIjoxMDMzMzc5MzU4MzE4MywibGFzdF92YWx1ZSI6IjEwMzMzNzkzNTgzMTgzIn0= (1,050 of 1,413, sortKey ID). Next run: change check since 2026-11-12T12:00Z, then finish the re-read (about 363 products left).
 - pass 3 (2026-11-13): change check since 2026-11-12T12:00Z found 3 products, clean/known. Full re-read products 1051-1413 read, hasNextPage false: **pass 3 COMPLETE**. Next run: change check since 2026-11-13T00:00Z; no full re-read pending (start pass 4 only if a change check returns a bulk touch).
 - 2026-11-15: change check since 2026-11-13T00:00Z found 295 products (stock-driven status changes), all read, 0 link errors. Next run: change check since 2026-11-15T00:00Z. No full re-read pending.
+- 2026-11-17: change check since 2026-11-15T00:00Z found 80 products, all read, 0 link errors. Next run: change check since 2026-11-17T00:00Z. No full re-read pending.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-11-13 (pass 3; pass 1 2026-10-28)
 
@@ -55,6 +56,8 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-11-17, see outputs/2026-11-17-audit.md): no ACTIVE in C1300-48P-4G (N, RF both 0 stock); possible HP/Poly same-product pair 89B62AA/2200-48820-025 (both New ACTIVE). Resolved: U2725QE, 1000934 now New ACTIVE.
 
 Needs decision (2026-11-15, see outputs/2026-11-15-audit.md): C31CJ57112 has TWO ACTIVE (N 200, LN 4; propose LN UNLISTED); no ACTIVE, all 0 stock: ATA191-3PW-K9, W79P, WPP30, 82M89AA, JBLXTREME2REDAM; single UNLISTED 0 stock: HEGSKAAAAUSZ-LN (again), 010-02754-01-LN, 7S445AA-LN, UAP-AC-LR-US-LN, 700504843-LN, 2200-86810-001-LN, A40-031-N, US-8-60W-5-N, 08147-408-N, 700480627; possible HP/Poly same-product pairs 7S445AA/207309-01, 7S447AA/207322-01; 10 more Q6. Resolved: 7K2F3AA, 206110-101, BES840BSXL, CP-3905 now New ACTIVE; DP-9841-K9, SR-A10 now have ACTIVE.
 
@@ -111,6 +114,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-17: audit, change check since 11-15 (80 products + 57 siblings, 68 groups, 0 link errors): C1300-48P-4G no ACTIVE (0 stock), possible same-product pair 89B62AA/2200-48820-025, U2725QE and 1000934 resolved (New ACTIVE). Reference group matches. No writes.
 - 2026-11-15: audit, change check since 11-13 (295 products + 124 siblings, ~200 groups, 0 link errors): C31CJ57112 two ACTIVE, 5 groups with no ACTIVE (all 0 stock), 10 single UNLISTED 0 stock, 10 more Q6, 6 groups resolved by the store. Q6 evidence: status follows stock. Reference group matches. No writes.
 - 2026-11-13: audit, change check (3 products, clean/known) + pass 3 re-read products 1051-1413 (~300 groups, 0 link errors): pass 3 COMPLETE. New: 2 Q6, 3 single UNLISTED (CBS250-48T-4G-UK-RF has 2 in stock), 1 possible typo key G2200-48350-025. Reference group matches. No writes.
 - 2026-11-12: audit, change check (0 products) + pass 3 re-read products 601-1050 (~350 groups, 0 link errors, 3 corrupted-key skipped): 3 groups with no ACTIVE (C31CJ57112 has stock), 2 more Q6, 10 single UNLISTED, 2 -GEN/New, 11 -RF keys. Reference group matches. No writes. Pass 3 at 1,050/1,413.
