@@ -29,6 +29,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - pass 3 (2026-11-13): change check since 2026-11-12T12:00Z found 3 products, clean/known. Full re-read products 1051-1413 read, hasNextPage false: **pass 3 COMPLETE**. Next run: change check since 2026-11-13T00:00Z; no full re-read pending (start pass 4 only if a change check returns a bulk touch).
 - 2026-11-15: change check since 2026-11-13T00:00Z found 295 products (stock-driven status changes), all read, 0 link errors. Next run: change check since 2026-11-15T00:00Z. No full re-read pending.
 - 2026-11-17: change check since 2026-11-15T00:00Z found 80 products, all read, 0 link errors. Next run: change check since 2026-11-17T00:00Z. No full re-read pending.
+- 2026-11-18: change check since 2026-11-17T00:00Z found 209 products (incl. 23 created 11-17 20:05Z, 93 blank TA*/UTA*), all read, 0 link errors in existing groups; 4 new groups unlinked. Next run: change check since 2026-11-18T00:00Z. No full re-read pending.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-11-13 (pass 3; pass 1 2026-10-28)
 
@@ -56,6 +57,8 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-11-18, see outputs/2026-11-18-audit.md): 11-17 import created products with no links: V110030BU000, 7S445AA, 85Q60AA (two ACTIVE), CP-8845-K9 (LN ACTIVE, N 0) need links; AIR-PWRINJ7 New and AIR-PWRINJ7-RF both ACTIVE in two groups (Q8); 700401 Q6; possible pair 7S4B5AA/207325-01 (both LN ACTIVE).
 
 Needs decision (2026-11-17, see outputs/2026-11-17-audit.md): no ACTIVE in C1300-48P-4G (N, RF both 0 stock); possible HP/Poly same-product pair 89B62AA/2200-48820-025 (both New ACTIVE). Resolved: U2725QE, 1000934 now New ACTIVE.
 
@@ -110,9 +113,11 @@ LEAVE AS IS (your decision):
 
 ## Learned patterns (only what a run actually observed)
 
-(none yet)
+- 2026-11-18: new products from imports arrive with blank `linked_products`; check every new product with `sku:<MPN>*` for existing siblings.
 
 ## Run log (newest first, one line each)
+
+- 2026-11-18: audit, change check since 11-17 (209 products + 61 siblings, ~99 groups, 93 blank skipped): 23 new products from an 11-17 import have no links; 4 join existing groups unlinked (V110030BU000, 7S445AA, 85Q60AA two ACTIVE, CP-8845-K9), AIR-PWRINJ7 N/RF split by -RF key (both ACTIVE), 700401 Q6, pair 7S4B5AA/207325-01. Reference group matches. No writes.
 
 - 2026-11-17: audit, change check since 11-15 (80 products + 57 siblings, 68 groups, 0 link errors): C1300-48P-4G no ACTIVE (0 stock), possible same-product pair 89B62AA/2200-48820-025, U2725QE and 1000934 resolved (New ACTIVE). Reference group matches. No writes.
 - 2026-11-15: audit, change check since 11-13 (295 products + 124 siblings, ~200 groups, 0 link errors): C31CJ57112 two ACTIVE, 5 groups with no ACTIVE (all 0 stock), 10 single UNLISTED 0 stock, 10 more Q6, 6 groups resolved by the store. Q6 evidence: status follows stock. Reference group matches. No writes.
