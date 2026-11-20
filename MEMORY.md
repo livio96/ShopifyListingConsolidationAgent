@@ -31,6 +31,7 @@ Read at the start of every run, update at the end. "Seeded" items come from the 
 - 2026-11-17: change check since 2026-11-15T00:00Z found 80 products, all read, 0 link errors. Next run: change check since 2026-11-17T00:00Z. No full re-read pending.
 - 2026-11-18: change check since 2026-11-17T00:00Z found 209 products (incl. 23 created 11-17 20:05Z, 93 blank TA*/UTA*), all read, 0 link errors in existing groups; 4 new groups unlinked. Next run: change check since 2026-11-18T00:00Z. No full re-read pending.
 - **pass 4** (2026-11-19): change check since 2026-11-18T00:00Z returned all 1,436 products (bulk touch 11-18 20:54-20:55Z), so pass 4 started. Query `updated_at:>='2026-11-18T00:00:00Z'` sortKey ID: products 1-400 read (~320 groups, 0 link errors). Resume pass 4 at eyJsYXN0X2lkIjo5MDQ3MDg1Njc4NjcxLCJsYXN0X3ZhbHVlIjoiOTA0NzA4NTY3ODY3MSJ9 (400 of 1,436, same query). Next run: change check since 2026-11-19T00:00Z, then continue pass 4.
+- pass 4 (2026-11-20): change check since 2026-11-19T00:00Z found 80 products, all read, 0 link errors. Pass 4 products 401-850 read (~300 groups, 0 link errors). Resume pass 4 at eyJsYXN0X2lkIjoxMDMzMzcxNTM2NTk2NywibGFzdF92YWx1ZSI6IjEwMzMzNzE1MzY1OTY3In0= (850 of 1,436, query `updated_at:>='2026-11-18T00:00:00Z'` sortKey ID). Next run: change check since 2026-11-20T00:00Z, then continue pass 4.
 - passStartedAt: 2026-10-25 (pass 1 finished 2026-10-28; groups can straddle pages, links are resolved with nodes())
 - lastFullPassAt: 2026-11-13 (pass 3; pass 1 2026-10-28)
 
@@ -58,6 +59,8 @@ Blank condition or group (93 seen, all 0 stock, no links; 53 on pages 9-10, 40 m
 
 Duplicate condition values in one group:
 (none)
+
+Needs decision (2026-11-20, see outputs/2026-11-20-audit.md): new Q6 77Y92AA; no ACTIVE (all 0 stock): UVC-G4-BULLET (new), U6-MESH-US (was Q6); 37966020-N single UNLISTED now has 2 in stock. Resolved: C31CJ57112 now N ACTIVE, LN UNLISTED.
 
 Needs decision (2026-11-19, see outputs/2026-11-19-audit.md): new single UNLISTED 0 stock 84002-11-LN. Resolved: P2426H now single ACTIVE. 77Y82AA-ABA now LN ACTIVE (Q6 pattern).
 
@@ -120,6 +123,7 @@ LEAVE AS IS (your decision):
 
 ## Run log (newest first, one line each)
 
+- 2026-11-20: audit, change check since 11-19 (80 products) + pass 4 products 401-850 (~300 groups, 51 siblings resolved, 0 link errors, 96 skipped blank/corrupted): new 77Y92AA Q6, UVC-G4-BULLET and U6-MESH-US no ACTIVE (0 stock), C31CJ57112 resolved. Reference group matches. No writes.
 - 2026-11-19: audit, change check since 11-18 hit all 1,436 (bulk touch) -> pass 4 started; products 1-400 read (~320 groups, ~277 clean, 43 issues, 1 new: 84002-11-LN single UNLISTED), 0 link errors. Reference group matches. No writes.
 - 2026-11-18: audit, change check since 11-17 (209 products + 61 siblings, ~99 groups, 93 blank skipped): 23 new products from an 11-17 import have no links; 4 join existing groups unlinked (V110030BU000, 7S445AA, 85Q60AA two ACTIVE, CP-8845-K9), AIR-PWRINJ7 N/RF split by -RF key (both ACTIVE), 700401 Q6, pair 7S4B5AA/207325-01. Reference group matches. No writes.
 
